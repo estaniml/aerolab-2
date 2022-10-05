@@ -1,10 +1,10 @@
 import { useContext } from 'react'
 import { MyContext } from '../context/MyContext'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 import aeropay from '../assets/icons/aeropay-3.svg'
 import aeropay2 from '../assets/icons/aeropay-2.svg'
 
-const Product = ({product, loading}) => {
+const Product = ({product}) => {
 
     const {data, pointsUpdate, setPointsUpdate, redeem, loader, setLoader} = useContext(MyContext)
  

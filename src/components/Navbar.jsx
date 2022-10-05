@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { MyContext } from '../context/MyContext'
 import styled from 'styled-components'
-import Coin from './spinners/Coin'
+import Coin from './loaders/Coin'
 import logo from '../assets/icons/aerolab-logo-1.svg'
 import logoResponsive from '../assets/icons/aerolab-logo-2.svg'
 import chevronDefault from '../assets/icons/chevron-default.svg'

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Notification from './Notification'
 import Pages from './Pages'
 import SortBy from './SortBy'
-import LoadingCard from './LoadingCard'
+import LoadingCard from './loaders/LoadingCard'
 const Product = lazy(() => import('./Product'))
 
 

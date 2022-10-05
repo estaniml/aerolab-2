@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components'
-import aerologo from '../assets/icons/aerolab-logo-2.svg'
+import aerologo from '../../assets/icons/aerolab-logo-2.svg'
 
 
 const LoadingCard = () => {
