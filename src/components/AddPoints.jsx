@@ -29,10 +29,17 @@ const AddPoints = () => {
                 <p>7500</p>
             </Li>
         </ul>
-        <Button type='submit'>
-            <img src={aerologo3} alt='aeropay logo' />
-            <p>Add Points</p>
-        </Button>
+
+        { loading ? 
+            <LoadingBtn type='button'>
+                <p>Processing...</p> 
+            </LoadingBtn>
+            :
+            <Button type='submit'>
+                <img src={aerologo3} alt='aeropay logo' />
+                <p>Add Points</p>
+            </Button>
+        }
     </Form>
   )
 }
@@ -127,6 +134,11 @@ const Button = styled.button`
     &:hover{
         background: ${({theme}) => theme.buttons.btnHover};
     }
+`
+
+const LoadingBtn = styled(Button)`
+    background: linear-gradient(102.47deg, rgba(23, 111, 235, 0.7) -5.34%, rgba(255, 128, 255, 0.7) 106.58%);
+    cursor: wait;
 `
 
 export default AddPoints

@@ -46,6 +46,7 @@ const Gitlogo = styled.div`
 `
 
 const A = styled.a`
+  position: relative;
   font-weight: 600;
   font-size: 18px;
   line-height: 150%; 
@@ -54,6 +55,32 @@ const A = styled.a`
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: color;
+
+    &:hover, &:focus{
+      color: #FF80FF;
+    }
+
+    &:focus::after, &:hover::after {
+        width: 100%;
+        left: 0%;
+    }
+    
+    &::after{
+        content: "";
+        pointer-events: none;
+        bottom: -2px;
+        left: 50%;
+        position: absolute;
+        width: 0%;
+        height: 1.5px;
+        background: ${ ({hov}) => hov ? `linear-gradient(102.47deg, #176FEB -5.34%, #FF80FF 106.58%)` : '#7C899C'};
+        transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+        transition-duration: 400ms;
+        transition-property: width, left;
+    } 
 `
 
 export default Footer
