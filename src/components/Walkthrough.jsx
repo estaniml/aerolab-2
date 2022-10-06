@@ -1,44 +1,66 @@
+import { useRef } from 'react'
 import styled from 'styled-components'
+import { useInView } from "framer-motion"
 import hero from '../assets/illustrations/hero-desktop.png'
 import browse from '../assets/illustrations/walkthroug-1-responsive.png'
 import choose from '../assets/illustrations/walkthroug-2-responsive.png'
 import enjoy from '../assets/illustrations/walkthroug-3-responsive.png'
-import icon1 from '../assets/icons/walkthrough-1.svg'
-import icon3 from '../assets/icons/walkthrough-2.svg'
-import icon2 from '../assets/icons/walkthrough-3.svg'
+import browseIcon from '../assets/icons/walkthrough-1.svg'
+import enjoyIcon from '../assets/icons/walkthrough-2.svg'
+import chooseIcon from '../assets/icons/walkthrough-3.svg'
+
+const data = [
+    {
+        id: 1,
+        img: browse,
+        icon: browseIcon,
+        title: '1—browse',
+        description: 'Browse our tech catalog with more than 20 top tech products'
+    },
+    {
+        id: 2,
+        img: choose,
+        icon: chooseIcon,
+        title: '2—choose',
+        description: 'Exchange your hard-earned AeroPoints for a cool tech item'
+    },
+    {
+        id: 3,
+        img: enjoy,
+        icon: enjoyIcon,
+        title: '3—enjoy',
+        description: 'All done We’ll take care of delivery of your tech item!'
+    }
+]
 
 const Walkthrough = () => {
+
+    const card = useRef(null)
+    const isInView = useInView(card)
+
   return (
     <Container>
         <img src={hero} alt='aerolab hero' />
+
         <div>
-            <Card>
-                <CardImg>
-                    <img src={browse} alt='aerolab hero browsing'  />
-                </CardImg>
-                <CardDescription>
-                    <h2><span><img src={icon1} alt='browse icon' /></span>1—browse</h2>
-                    <p>Browse our tech catalog with more than 20 top tech products</p>
-                </CardDescription>
-            </Card>
-            <Card>
-                <CardImg>
-                    <img src={choose} alt='aerolab hero choosing'  />
-                </CardImg>
-                <CardDescription>
-                    <h2><span><img src={icon2} alt='choose icon' /></span>2—choose</h2>
-                    <p>Exchange your hard-earned AeroPoints for a cool tech item</p>
-                </CardDescription>
-            </Card>
-            <Card>
-                <CardImg>
-                    <img src={enjoy} alt='aerolab hero enjoying'  />
-                </CardImg>
-                <CardDescription>
-                    <h2><span><img src={icon3} alt='enjoy icon' /></span>3—enjoy</h2>
-                    <p>All done We’ll take care of delivery of your tech item!</p>
-                </CardDescription>
-            </Card>
+            {
+                data?.map( article => (
+                    <Card 
+                        key={article.id}
+                        ref={card}
+                        isInView={isInView}
+                    >
+                        <CardImg>
+                            <img src={article.img} alt='aerolab hero browsing'  />
+                        </CardImg>
+                        <CardDescription>
+                            <h2><span><img src={article.icon} alt='browse icon' /></span>{article.title}</h2>
+                            <p>{article.description}</p>
+                        </CardDescription>
+                    </Card>
+                ))
+            }
+            
         </div>
     </Container>
   )
@@ -101,7 +123,7 @@ const Card = styled.article`
     z-index: 10;
     width: 335px;
     border: 12px solid rgba(255, 255, 255, 0.7);
-    box-shadow: 0px 2px 40px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 2px 40px rgba(0, 0, 0, 0.10);
     border-radius: 32px;
     min-height: 460px;
 
@@ -111,7 +133,9 @@ const Card = styled.article`
         min-height: 660px;
         position: relative;
         top: -80px;
-        transition: 0.2s ease-in-out all;
+        transition: box-shadow 0.3s ease-in-out;
+        transition: opacity 1s ease-in-out;
+        opacity: ${({isInView}) => isInView ? '1' : '0'};
         
         &:nth-child(1) {
             transform: rotate(355deg);
@@ -168,14 +192,13 @@ const CardImg = styled.div`
 
 const CardDescription = styled.div`
     background-color:white ;
-    border: 1px solid #e7ecf3;
     border-radius: 0px 0px 20px 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     padding: 1px 24px 14px;
-    min-height: 110px;
+    min-height: 160px;
 
     @media (min-width: 1400px) {
         width: 101%;

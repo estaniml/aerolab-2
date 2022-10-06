@@ -1,6 +1,7 @@
-import { lazy, Suspense, useContext, useEffect, useState } from 'react'
+import { lazy, Suspense, useContext, useEffect, useRef, useState } from 'react'
 import { MyContext } from '../context/MyContext'
 import styled from 'styled-components'
+import { useInView } from "framer-motion"
 import Notification from './Notification'
 import Pages from './Pages'
 import SortBy from './SortBy'
@@ -23,6 +24,10 @@ const Products = ({}) => {
         notifications,
         removeNotification
     } = useContext(MyContext)
+
+    
+    const title = useRef(null)
+    const isInView = useInView(title)
 
     //Getting the products
     useEffect(() => {
@@ -113,8 +118,8 @@ const Products = ({}) => {
     }
 
   return (
-    <Container ref={productsList}>
-        <h2><span>Tech</span> products</h2>
+    <Container ref={productsList} isInView={isInView}>
+        <h2 ref={title}><span>Tech</span> products</h2>
 
         <FilterBar>
             <div>
@@ -156,7 +161,7 @@ const Products = ({}) => {
         </FilterBar>
 
         
-        <ProductsGrid>
+        <ProductsGrid isInView={isInView}>
             {   pagination().map( product => (
                     <Suspense fallback={(<LoadingCard />)} key={product._id}>
                         <Product 
@@ -207,10 +212,14 @@ const Container = styled.section`
     }
 
     > h2  {
+        margin-left: ${({isInView}) => isInView ? '0' : '-100px'};
         font-weight: 900;
         font-size: 32px;
         line-height: 80%;
         text-transform: uppercase;
+        transition: 0.4s ease-in-out all;
+        transition-delay: 0.4s;
+        opacity: ${({isInView}) => isInView ? '1' : '0'};
 
         @media (min-width: 1024px){
             font-size: 32px;

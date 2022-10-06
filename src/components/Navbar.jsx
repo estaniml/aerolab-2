@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { MyContext } from '../context/MyContext'
 import styled from 'styled-components'
+import {motion} from 'framer-motion'
 import Coin from './loaders/Coin'
 import logo from '../assets/icons/aerolab-logo-1.svg'
 import logoResponsive from '../assets/icons/aerolab-logo-2.svg'
@@ -12,14 +13,22 @@ const Navbar = ({card, setCard}) => {
 
   return (
     <Nav>
-        <a href='#' aria-label="Go to the top of website" alt='Aerolab Logo'></a>
-        <div onClick={() => setCard(!card)}>
-            {!loading ? <img src='/favicon.svg' alt='Aerolab Logo' /> : <Coin />}
-            <p>{data.points}</p>
-            <Chevron card={card}>
-              <img src={chevronDefault} alt='Show balance icon' />
-            </Chevron>
-        </div>
+      <A
+        href='#'
+        aria-label="Go to the top of website" 
+        alt='Aerolab Logo'
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.5 }}
+        transition={{ duration: 0.6 }}
+      ></A>
+      <div onClick={() => setCard(!card)}>
+          {!loading ? <img src='/favicon.svg' alt='Aerolab Logo' /> : <Coin />}
+          <p>{data.points}</p>
+          <Chevron card={card}>
+            <img src={chevronDefault} alt='Show balance icon' />
+          </Chevron>
+      </div>
     </Nav>
   )
 }
@@ -38,21 +47,6 @@ const Nav = styled.nav`
     padding: 40px 120px;
   }
 
-  > a {
-    position: fixed;
-    z-index: 100;
-    width: 38px;
-    height: 36px;
-    background-image: url(${logoResponsive});
-    background-size: cover;
-    cursor: pointer;
-
-    @media (min-width: 1024px){
-      width: 100px;
-      left: 120px;
-      background-image: url(${logo});
-    }
-  }
 
   > div {
     position: fixed;
@@ -89,6 +83,22 @@ const Nav = styled.nav`
       text-fill-color: transparent;
       font-weight: 600;
     }
+  }
+`
+
+const A = styled(motion.a)`
+  position: fixed;
+  z-index: 100;
+  width: 38px;
+  height: 36px;
+  background-image: url(${logoResponsive});
+  background-size: cover;
+  cursor: pointer;
+
+  @media (min-width: 1024px){
+    width: 100px;
+    left: 120px;
+    background-image: url(${logo});
   }
 `
 

@@ -1,14 +1,16 @@
-import { useContext } from 'react'
+import { useContext, useRef } from 'react'
 import { MyContext } from '../context/MyContext'
 import styled from 'styled-components'
+import { useInView } from "framer-motion"
 import aeropay from '../assets/icons/aeropay-3.svg'
 import aeropay2 from '../assets/icons/aeropay-2.svg'
 
 const Product = ({product}) => {
 
     const {data, pointsUpdate, setPointsUpdate, redeem, loader, setLoader} = useContext(MyContext)
- 
-    
+
+    const card = useRef(null)
+    const isInView = useInView(card)
 
     const redeemItem = async (id, name) => {
         setLoader({
@@ -27,7 +29,7 @@ const Product = ({product}) => {
 
   return (
     <Container>
-        <ProductCard>
+        <ProductCard ref={card} isInView={isInView} >
             <div>
                 <img src={product.img.url} alt={`get ${product.name} with Aerolab`} />
             </div>
@@ -72,22 +74,26 @@ const Container = styled.div`
 `
 
 const ProductCard = styled.div`
-    width: 100%;
-    border: 1px solid #DAE4F2;
-    border-radius: 16px;
     display: flex;
     flex-direction: column;
     gap:8px;
+    width: 100%;
+    border: 1px solid #DAE4F2;
+    border-radius: 16px;
 
     > div {
         min-height: 330px;
         display: flex;
         align-items: center;
         justify-content: center;
+        overflow: hidden;
 
         > img {
             width: 280px;
             height: 204px;
+            transition: 0.5s ease-in-out all;
+            margin-bottom: ${({isInView}) => isInView ? '0' : '-100px'};
+            opacity: ${({isInView}) => isInView ? '1' : '0'};
         }
 
     }

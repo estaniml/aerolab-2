@@ -1,11 +1,16 @@
 import styled from 'styled-components'
+import {motion} from 'framer-motion'
 import wave from '../assets/illustrations/wavepattern-aerocard.png'
 import aerologo2 from '../assets/icons/aeropay-2.svg'
 import AddPoints from './AddPoints'
 
 const Balance = () => {
   return (
-    <Card>
+    <Card
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.3 }}
+    >
         <h3>Add balance</h3>
         
         <hr />
@@ -36,7 +41,7 @@ const Balance = () => {
   )
 }
 
-const Card = styled.div`
+const Card = styled(motion.div)`
     position: fixed;
     right: 20px;
     z-index: 50;

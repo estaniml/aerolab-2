@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import {motion} from 'framer-motion'
 import cross from '../assets/icons/cross-default.svg'
 import error from '../assets/icons/system-error.svg'
 import success from '../assets/icons/system-success.svg'
@@ -11,7 +12,12 @@ const Notification = ({notification, removeNotification}) => {
         <>
             { status !== '' && 
                 (
-                    <Message status={status}>
+                    <Message 
+                        status={status}
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.3 }}
+                    >
                         <img src={ status === 'success' ? success : error } />
                         
                         { status === 'success' ?
@@ -33,7 +39,7 @@ const Notification = ({notification, removeNotification}) => {
 
 
 
-const Message = styled.div`
+const Message = styled(motion.div)`
     display: flex;
     align-items: center;
     background-color: #fff;

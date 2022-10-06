@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { MyProvider } from './context/MyContext'
 import styled, { ThemeProvider } from 'styled-components'
+import { motion } from "framer-motion"
 import Balance from './components/Balance'
 import Footer from './components/Footer'
 import Header from "./components/Header"
@@ -49,7 +50,7 @@ function App() {
   )
 }
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   font-family: 'Montserrat',  sans-serif;
   position: relative;
   overflow: hidden;

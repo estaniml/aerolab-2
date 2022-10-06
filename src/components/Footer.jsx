@@ -17,7 +17,9 @@ const Footer = () => {
         </Gitlogo>
         <A 
           hov={hover}
-        href='https://github.com/estaniml/aerolab-2'>View this repository</A>
+          href='https://github.com/estaniml/aerolab-2'
+          target="_blank"
+        >View this repository</A>
     </Foot>
   )
 }

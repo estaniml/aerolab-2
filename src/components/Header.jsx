@@ -1,6 +1,7 @@
-import { useContext } from 'react'
+import { useContext, useRef } from 'react'
 import { MyContext } from '../context/MyContext'
 import styled from 'styled-components'
+import { useInView } from "framer-motion"
 import downArrow from '../assets/icons/downarrow.svg'
 import waves from '../assets/illustrations/wavepattern-mobile.png'
 import wavesDesktop from '../assets/illustrations/wavepattern-tablet.png'
@@ -9,14 +10,19 @@ const Header = () => {
 
     const {productsList } = useContext(MyContext)
 
+    const header = useRef(null)
+    const isInView = useInView(header)
+
     const scrollInto = () => {
         productsList.current.scrollIntoView()
     }
 
+    
+
   return (
     <HeaderContainer>
         <Waves></Waves>
-        <Landing>
+        <Landing ref={header} isInView={isInView}>
             <h5>Explore the</h5>
             <h1><span>Tech</span> zone</h1>
             <p>Here you’ll be able to redeem all of your hard-earned Aeropoints and exchange them for cool tech.</p>
@@ -28,7 +34,7 @@ const Header = () => {
             </button>
         </Landing>
 
-        <Hero>
+        <Hero isInView={isInView}>
             <img src={hero} alt='aerolab hero' />
         </Hero>
         
@@ -52,7 +58,7 @@ const HeaderContainer = styled.header`
 
 const Landing = styled.div`
     margin: 0 auto;
-    padding: 0px 30px;
+    padding: 0px 30px;    
 
     @media (min-width: 1024px) {
         width: 300px;
@@ -74,6 +80,10 @@ const Landing = styled.div`
         letter-spacing: 4px;
         line-height: 150%;
         text-transform: uppercase;
+        transition: 0.4s ease-in-out all;
+        transition-delay: 0.2s;
+        opacity: ${({isInView}) => isInView ? '1' : '0'};
+    
 
         @media (min-width: 1400px) { 
             text-align: left;
@@ -83,11 +93,15 @@ const Landing = styled.div`
 
     > h1 {
         margin: 0;
+        margin-left: ${({isInView}) => isInView ? '0' : '-100px'};
         text-align: center;
         font-weight: 900;
         font-size: 96px;
         line-height: 80%; 
         text-transform: uppercase;
+        transition: 0.4s ease-in-out all;
+        transition-delay: 0.2s;
+        opacity: ${({isInView}) => isInView ? '1' : '0'};
 
         @media (min-width: 1400px) { 
             text-align: left;
@@ -178,6 +192,9 @@ const Waves = styled.section`
 
 const Hero = styled.aside`
     display: none; 
+    transition: 0.4s ease-in-out all;
+    transition-delay: 0.2s;
+    opacity: ${({isInView}) => isInView ? '1' : '0'};
 
     @media (min-width: 1400px){
         display: flex;
