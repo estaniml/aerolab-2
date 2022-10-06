@@ -8,7 +8,7 @@ import LoadingCard from './loaders/LoadingCard'
 const Product = lazy(() => import('./Product'))
 
 
-const Prod = ({}) => {
+const Products = ({}) => {
 
     const [products, setProducts] = useState([])
     const [recents, setRecents] = useState([])
@@ -57,6 +57,7 @@ const Prod = ({}) => {
                 setFilteredItems(showCategory)
                 setOption('RECENT')
                 setCurrentPage(0)
+                setPage(1)
 
             } else {
                 setFilteredItems(products)
@@ -69,12 +70,21 @@ const Prod = ({}) => {
 
     // Creating the pagination
     const itemsPerPage = () => {
-        if(screen.width > 1024){
-            return 16
+        if(screen.width > 1024){  
+            if(filteredItems.length >= 16){
+                return 16
+            } else {
+                return filteredItems.length
+            }  
         } else {
-            return 8
+            if(filteredItems.length >= 8){
+                return 8
+            } else {
+                return filteredItems.length
+            } 
         }
     }
+    
     const totalPages = Math.ceil(filteredItems.length / itemsPerPage())
 
     
@@ -127,6 +137,9 @@ const Prod = ({}) => {
                     recents={recents}
                     option={option}
                     setOption={setOption}
+                    setCurrentPage={setCurrentPage}
+                    setPage={setPage}
+                    products={products}
                 />
             </div>
             
@@ -166,7 +179,7 @@ const Prod = ({}) => {
                 />
             </div>
             <p>
-                <span>{page * itemsPerPage()} of {products.length}</span> products
+                <span>{page * itemsPerPage()} of {filteredItems.length}</span> products
             </p>
         </Paginator>
 
@@ -208,7 +221,7 @@ const Container = styled.div`
         }
 
         > span {
-            background: linear-gradient(102.47deg, #176FEB -5.34%, #FF80FF 186.58%);
+            background: ${({theme}) => theme.gradientBg};
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -358,7 +371,7 @@ const Paginator = styled.div`
         }
 
         span {
-            background: linear-gradient(102.47deg, #176FEB -5.34%, #FF80FF 106.58%);
+            background: ${({theme}) => theme.gradientBg};
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -376,4 +389,4 @@ const Notifications = styled.div`
     gap:1rem;
     z-index: 150;
 `
-export default Prod
+export default Products

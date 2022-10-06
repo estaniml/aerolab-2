@@ -1,20 +1,26 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import styled from 'styled-components'
 
-const SortBy = ({filteredItems, setFilteredItems, option, setOption}) => {    
+const SortBy = ({products, filteredItems, setFilteredItems, option, setOption, setPage, setCurrentPage}) => {    
 
     useEffect(() => {
         switch (option) {
             case 'HIGH':
                 const high = [...filteredItems].sort((a, b) => b.cost - a.cost);
                 setFilteredItems(high); 
+                setCurrentPage(0)
+                setPage(1)
                 break;
             case 'LOW':
                 const low = [...filteredItems].sort((a, b) => a.cost - b.cost);
                 setFilteredItems(low);
+                setCurrentPage(0)
+                setPage(1)
                 break;
             case 'RECENT':
-                setFilteredItems(filteredItems);
+                setFilteredItems(products);
+                setCurrentPage(0)
+                setPage(1)
                 break;
             default:
                 break;

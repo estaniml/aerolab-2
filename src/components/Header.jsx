@@ -1,11 +1,10 @@
-import { MyContext } from '../context/MyContext'
 import { useContext } from 'react'
+import { MyContext } from '../context/MyContext'
 import styled from 'styled-components'
 import downArrow from '../assets/icons/downarrow.svg'
 import waves from '../assets/illustrations/wavepattern-mobile.png'
 import wavesDesktop from '../assets/illustrations/wavepattern-tablet.png'
 import hero from '../assets/illustrations/hero.png'
-
 const Header = () => {
 
     const {productsList } = useContext(MyContext)
@@ -38,22 +37,22 @@ const Header = () => {
 }
 
 const HeaderContainer = styled.div`
-    padding: 26px 20px 100px;
-    margin: 0 auto;
     position: relative;
+    margin: 0 auto;
+    padding: 26px 20px 100px;
 
     @media (min-width: 1400px){
-        width: 100vw;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        width: 100vw;
         padding: 0px 130px 80px;
     }
 `
 
 const Landing = styled.div`
-    padding: 0px 30px;
     margin: 0 auto;
+    padding: 0px 30px;
 
     @media (min-width: 1024px) {
         width: 300px;
@@ -68,31 +67,31 @@ const Landing = styled.div`
     }
 
     > h5 {
+        margin: 0;
         text-align: center;
+        color: #7C899C;
         font-weight: 600;
         letter-spacing: 4px;
-        color: #7C899C;
         line-height: 150%;
         text-transform: uppercase;
-        margin: 0;
 
         @media (min-width: 1400px) { 
-            font-size: 18px;
             text-align: left;
+            font-size: 18px;
         }
     }
 
     > h1 {
+        margin: 0;
+        text-align: center;
         font-weight: 900;
         font-size: 96px;
         line-height: 80%; 
-        text-align: center;
         text-transform: uppercase;
-        margin: 0;
 
         @media (min-width: 1400px) { 
-            font-size: 180px;
             text-align: left;
+            font-size: 180px;
         }
 
         > span {
@@ -126,7 +125,7 @@ const Landing = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 20px 38px;
+        padding: 20px 30px;
         gap: 10px;
         border: none;
         background: linear-gradient(102.47deg, #176FEB -5.34%, #FF80FF 106.58%);
@@ -138,8 +137,8 @@ const Landing = styled.div`
         cursor: pointer;
 
         &:hover{
-        background: linear-gradient(102.47deg, #1667D9 -5.34%, #F279F2 106.58%);
-    }
+            background: linear-gradient(102.47deg, #1667D9 -5.34%, #F279F2 106.58%);
+        }
 
         > img {
             width: 11px;

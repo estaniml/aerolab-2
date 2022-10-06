@@ -43,31 +43,40 @@ export const MyProvider = ({ children }) => {
   
         // Adding user's points
         useEffect(() => {
-        if( points !== null ) {
-            setLoader(true)
-            let request = new XMLHttpRequest();
+
+            if( points !== null ) {
+
+                setLoader(true)
+                const url = 'https://coding-challenge-api.aerolab.co/user/points'
+
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'Authorization': `${import.meta.env.VITE_APP_AEROLAB}`
+                    },
+                    body: JSON.stringify({ 'amount': parseInt(`${points}`) })
+            })
+                .then( res => res.json())
+                .catch( err => {
+                    console.error('Error:', err) 
+                })
+                .then( response => {
+                    console.log('Success:', response)
+                })
             
-            request.open('POST', 'https://coding-challenge-api.aerolab.co/user/points');
-    
-            request.setRequestHeader('Content-Type', 'application/json');
-            request.setRequestHeader('Accept', 'application/json');
-            request.setRequestHeader('Authorization', `${import.meta.env.VITE_APP_AEROLAB}`);
-    
-            let body = {
-            'amount': parseInt(`${points}`)
-            };
-    
-            request.send(JSON.stringify(body));
+            }   
             setLoader(false)
-            
-        }
-        setPoints(null)
+            setPoints(null)
     
         }, [points])
 
         //Reediming items
         const redeem = async (id, name) => {
+
             const url = 'https://coding-challenge-api.aerolab.co/redeem';
+
             const response = await fetch(url, {
                  method: 'POST',
                  headers: {

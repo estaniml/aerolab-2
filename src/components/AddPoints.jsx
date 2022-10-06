@@ -29,32 +29,33 @@ const AddPoints = () => {
                 <p>7500</p>
             </Li>
         </ul>
-        <Btn type='submit'>
+        <Button type='submit'>
             <img src={aerologo3} alt='aeropay logo' />
             <p>Add Points</p>
-        </Btn>
+        </Button>
     </Form>
   )
 }
 
 const Form = styled.form`
     > ul {
-        padding: 0;
         display: flex;
         gap: 10px;
         min-width: 100%;
         height: 100%;
+        padding: 0;
     }
 
 `
 
 const Li = styled.li`
-    background: ${({quantity}) => quantity ? 'linear-gradient(102.47deg, #176FEB -5.34%, #FF80FF 106.58%)' : '#E6F0FF'};
+    width: 100%;
+    padding: 8px 16px;
+    background: #E6F0FF;
     border: none;
     border-radius: 12px;
-    padding: 8px 16px;
-    width: 100%;
     cursor: pointer;
+    
 
     &:nth-child(1){
          background: ${({quantity}) => quantity === 1000 
@@ -92,39 +93,39 @@ const Li = styled.li`
     }
 
     > p {
-        text-align: center;
         margin: 0;
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 150%;
+        text-align: center;
         color: ${({quantity}) => quantity && '#E6F0FF'};
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 150%;
         background-clip: text;
         text-fill-color: transparent;
     }
 
 `
 
-const Btn = styled.button`
-    width: 100%;
-    height: 50px;
+const Button = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 12px 16px;
     gap: 8px;
-    background: linear-gradient(102.47deg, #176FEB -5.34%, #FF80FF 106.58%);
-    border: none;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
-    border-radius: 16px;
-    font-weight: 600;
+    width: 100%;
+    height: 50px;
+    padding: 12px 16px;
     font-size: 18px;
+    font-weight: 600;
     line-height: 150%;
     color: #FFFFFF;
-    cursor: pointer;
+    background: ${({theme}) => theme.gradientBg};
+    border: none;
+    border-radius: 16px;
+    box-shadow: ${({theme}) => theme.buttons.btnShadow};
     transition: 1.3s ease-in-out all;
+    cursor: pointer;
 
     &:hover{
-        background: linear-gradient(102.47deg, #1667D9 -5.34%, #F279F2 106.58%);
+        background: ${({theme}) => theme.buttons.btnHover};
     }
 `
 

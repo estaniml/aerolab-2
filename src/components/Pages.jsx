@@ -50,7 +50,7 @@ const Paginator = styled.div`
         color: #7C899C;
 
         > span {
-            background: linear-gradient(102.47deg, #176FEB -5.34%, #FF80FF 106.58%);
+            background: ${({theme}) => theme.gradientBg};
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;

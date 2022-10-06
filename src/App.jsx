@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { MyProvider } from './context/MyContext'
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import Balance from './components/Balance'
 import Footer from './components/Footer'
 import Header from "./components/Header"
@@ -12,25 +12,36 @@ function App() {
 
   const [card, setCard] = useState(false)
 
+  const theme = {
+    gradientBg: "linear-gradient(102.47deg, #176FEB -5.34%, #FF80FF 106.58%)",
+    buttons: {
+      btnShadow: "0px 2px 8px rgba(0, 0, 0, 0.05)",
+      btnHover: "linear-gradient(102.47deg, #1667D9 -5.34%, #F279F2 106.58%)"
+    }
+  }
+
   return (
     <MyProvider>
+      <ThemeProvider theme={theme}>
 
-      <Container>
-        <Navbar setCard={setCard} card={card} />
-        { card && <Balance />}
+        <Container>
+          <Navbar 
+            setCard={setCard} 
+            card={card} 
+            />
 
-        <div onClick={() => setCard(false)}>
-          <Header />
-          <Walkthrough/>
-          <Products />
-        </div>
+          { card && <Balance />}
 
-        <Footer />
-        
-        
-        
+          <div onClick={() => setCard(false)}>
+            <Header />
+            <Walkthrough/>
+            <Products />
+          </div>
 
-      </Container>
+          <Footer />
+
+        </Container>
+      </ThemeProvider>
       
     </MyProvider>
 

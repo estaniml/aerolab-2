@@ -187,7 +187,7 @@ const CardDescription = styled.div`
         font-size: 24px;
         line-height: 100%;
         text-transform: uppercase;
-        background: linear-gradient(102.47deg, #176FEB -5.34%, #FF80FF 106.58%);
+        background: ${({theme}) => theme.gradientBg};
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;

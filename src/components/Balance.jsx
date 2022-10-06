@@ -37,50 +37,50 @@ const Balance = () => {
 }
 
 const Card = styled.div`
-    z-index: 50;
     position: fixed;
-    width: 90%;
     right: 20px;
+    z-index: 50;
+    width: 90%;
+    padding: 24px; 
     background: #FFFFFF;
     border: 1px solid #DAE4F2;
-    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.15);
     border-radius: 16px;
-    padding: 24px; 
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.15);
 
     @media (min-width: 1024px){
-        width: 310px;
         top: 70px;
         right: 111px;
+        width: 310px;
     }
 
     > h3 {
-        font-weight: 600;
-        font-size: 18px;
-        line-height: 150%;
         margin: 0;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 150%;
     }
 
     > hr {
-        border: 1px solid #DAE4F2;
         position: absolute;
-        width: 100%;
         left: 0;
+        width: 100%;
+        border: 1px solid #DAE4F2;
     }
 `
 
 const Aerocard = styled.div`
-    position: relative; 
-    margin-top: 32px;
-    background-color: #111827;
-    width: 80%;
-    height: 150px;
-    color: #fff; 
-    border-radius: 8px;
     overflow: hidden;
-    padding: 16px;
+    position: relative; 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 80%;
+    height: 150px;
+    margin-top: 32px;
+    padding: 16px;
+    color: #fff; 
+    background-color: #111827;
+    border-radius: 8px;
 
     @media (min-width: 1024px){
         width: 100%;
@@ -105,9 +105,9 @@ const Aerocard = styled.div`
 
 const Pattern = styled.div`
     position: absolute;
-    width: inherit;
-    bottom: -10px;
     left: -10px;
+    bottom: -10px;
+    width: inherit;
 `
 
 
