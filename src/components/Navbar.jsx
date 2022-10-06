@@ -12,12 +12,12 @@ const Navbar = ({card, setCard}) => {
 
   return (
     <Nav>
-        <a href='#'></a>
+        <a href='#' aria-label="Go to the top of website" alt='Aerolab Logo'></a>
         <div onClick={() => setCard(!card)}>
             {!loading ? <img src='/favicon.svg' alt='Aerolab Logo' /> : <Coin />}
             <p>{data.points}</p>
             <Chevron card={card}>
-              <img src={chevronDefault} />
+              <img src={chevronDefault} alt='Show balance icon' />
             </Chevron>
         </div>
     </Nav>
@@ -95,6 +95,16 @@ const Nav = styled.nav`
 const Chevron = styled.div`
   transform: ${ ({card}) => card ? 'rotate(90deg)' : 'rotate(270deg)'};
   transition: 0.2s ease-in-out all;
+
+  > img {
+    width: 20px;
+    height: 20px;
+
+    @media (min-width: 1400px){
+      width: 24px;
+      height: 24px;
+    }
+  }
 `
 
 export default Navbar

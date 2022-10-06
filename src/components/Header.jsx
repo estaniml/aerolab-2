@@ -36,7 +36,7 @@ const Header = () => {
   )
 }
 
-const HeaderContainer = styled.div`
+const HeaderContainer = styled.header`
     position: relative;
     margin: 0 auto;
     padding: 26px 20px 100px;
@@ -176,7 +176,7 @@ const Waves = styled.section`
     }
 `
 
-const Hero = styled.div`
+const Hero = styled.aside`
     display: none; 
 
     @media (min-width: 1400px){
@@ -184,8 +184,8 @@ const Hero = styled.div`
         position: relative;
         margin: 0px 0px 0px 80px;
         padding: 0;
-        width: 700px;
-        height: 510px;
+        width: 720px;
+        height: 480px;
         background: linear-gradient(102.47deg, rgba(23, 111, 235, 0.5) -5.34%, rgba(255, 128, 255, 0.5) 106.58%);
         box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.12);
         border-radius: 104px;
@@ -194,8 +194,9 @@ const Hero = styled.div`
             position: absolute;
             bottom:0px;
             left: 50%;
+            width: 580px;
+            height: 600px;
             transform: translateX(-50%);
-            width: 90%;
         }
     }
 `

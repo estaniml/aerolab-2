@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react'
+import { MyContext } from '../context/MyContext'
 import styled from 'styled-components'
 import aerologo3 from '../assets/icons/aeropay-3.svg'
-import { MyContext } from '../context/MyContext'
 
 const AddPoints = () => {
 

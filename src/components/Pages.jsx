@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import chevronActive from '../assets/icons/chevron-active.svg'
-import chevronDisabled from '../assets/icons/chevron-disabled.png'
+import chevronDisabled from '../assets/icons/chevron-default.svg'
 
 const Pages = ({nextPage, prevPage, totalPages, page, pagination}) => {
 
@@ -8,24 +8,24 @@ const Pages = ({nextPage, prevPage, totalPages, page, pagination}) => {
   return (
     <Paginator>
         { page  !== 1 ?
-            <ButtonActive onClick={prevPage}>
-                    <img src={chevronActive} style={{transform: 'rotate(180deg)'}}/>
+            <ButtonActive onClick={prevPage} title="Next Page Active">
+                    <Icon src={chevronActive} style={{transform: 'rotate(180deg)'}} alt='Next Page Active' />
             </ButtonActive>
             :
-            <ButtonDisabled>
-                <img src={chevronDisabled}  style={{transform: 'rotate(180deg)'}}/>
+            <ButtonDisabled title="Next Page Inactive">
+                <Icon src={chevronDisabled}  style={{transform: 'rotate(180deg)'}} alt='Next Page Inactive' />
             </ButtonDisabled>
         }
 
         <p>Page <span>{page} of {totalPages}</span></p>
         
         { page !== totalPages && pagination().length > 7 ?
-            <ButtonActive onClick={nextPage}>
-                    <img src={chevronActive} />
+            <ButtonActive onClick={nextPage} title="Previous Page Active">
+                    <Icon src={chevronActive} alt='Previous Page Active' />
             </ButtonActive>
             :
-            <ButtonDisabled>
-                <img src={chevronDisabled} />
+            <ButtonDisabled title="Previous Page Inactive">
+                <Icon src={chevronDisabled} alt='Previous Page Inactive' />
             </ButtonDisabled>
         }
     </Paginator>
@@ -47,7 +47,7 @@ const Paginator = styled.div`
         font-weight: 600;
         font-size: 16px;
         line-height: 150%;
-        color: #7C899C;
+        color: #677281;
 
         > span {
             background: ${({theme}) => theme.gradientBg};
@@ -73,18 +73,26 @@ const ButtonActive = styled.button`
     &:hover {
         background: #CCE1FF;
     }
-    
 `
 
-const ButtonDisabled = styled.button`
-    border: none;
-    width: 36px;
-    height: 36px;
+const ButtonDisabled = styled(ButtonActive)`
     background: #E6EDF7;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    cursor: default;
+    opacity: 0.5;
+
+    &:hover {
+        background: #E6EDF7;
+    }
+`
+
+const Icon = styled.img`
+    width: 20px;
+    height: 20px;
+
+    @media (min-width: 1400px){
+        width: 24px;
+        height: 24px;
+    }
 `
 
 export default Pages

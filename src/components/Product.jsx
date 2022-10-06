@@ -33,7 +33,7 @@ const Product = ({product}) => {
             </div>
 
             <hr />
-            <h4>{product.name}</h4>
+            <h2>{product.name}</h2>
             
             <p>{product.category}</p>
         </ProductCard>
@@ -50,13 +50,13 @@ const Product = ({product}) => {
                         onClick={() => redeemItem(product._id, product.name)}
                         >
                         <p>Redeem for</p>
-                        <span> <img src={aeropay} /> {product.cost}</span> 
+                        <span> <img src={aeropay} alt='aerolab icon' /> {product.cost}</span> 
                     </SuccessBtn>
             :
                 <DisabledBtn>
                     <p>You need</p>
                     <span> 
-                        <img src={aeropay2} /> 
+                        <img src={aeropay2} alt='aerolab icon' /> 
                         {product.cost - data.points}
                     </span>
                 </DisabledBtn>
@@ -96,8 +96,9 @@ const ProductCard = styled.div`
         width: 100%;
     }
 
-    > h4 {
+    > h2 {
         margin: 0px 24px;
+        font-size: 18px;
         font-weight: 600;
         line-height: 150%;
     }
@@ -107,7 +108,7 @@ const ProductCard = styled.div`
         font-weight: 600;
         font-size: 12px;
         line-height: 150%;
-        color: #7C899C;
+        color: #606a79;
         text-transform: uppercase;
     }
 `

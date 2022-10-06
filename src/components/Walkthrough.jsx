@@ -14,28 +14,28 @@ const Walkthrough = () => {
         <div>
             <Card>
                 <CardImg>
-                    <img src={browse} alt='aerolab hero'  />
+                    <img src={browse} alt='aerolab hero browsing'  />
                 </CardImg>
                 <CardDescription>
-                    <h4><span><img src={icon1} /></span>1—browse</h4>
+                    <h2><span><img src={icon1} alt='browse icon' /></span>1—browse</h2>
                     <p>Browse our tech catalog with more than 20 top tech products</p>
                 </CardDescription>
             </Card>
             <Card>
                 <CardImg>
-                    <img src={choose} alt='aerolab hero'  />
+                    <img src={choose} alt='aerolab hero choosing'  />
                 </CardImg>
                 <CardDescription>
-                    <h4><span><img src={icon2} /></span>2—choose</h4>
+                    <h2><span><img src={icon2} alt='choose icon' /></span>2—choose</h2>
                     <p>Exchange your hard-earned AeroPoints for a cool tech item</p>
                 </CardDescription>
             </Card>
             <Card>
                 <CardImg>
-                    <img src={enjoy} alt='aerolab hero'  />
+                    <img src={enjoy} alt='aerolab hero enjoying'  />
                 </CardImg>
                 <CardDescription>
-                    <h4><span><img src={icon3} /></span>3—enjoy</h4>
+                    <h2><span><img src={icon3} alt='enjoy icon' /></span>3—enjoy</h2>
                     <p>All done We’ll take care of delivery of your tech item!</p>
                 </CardDescription>
             </Card>
@@ -59,9 +59,9 @@ const Container = styled.section`
 
     > img {
         position: absolute;
-        width: 580px;
-        height: 518.58px;
-        left: calc(50% - 580px/2);
+        width: 540px;
+        height: 540px;
+        left: calc(50% - 540px/2);
         top: -120px;
         z-index: 10;
 
@@ -94,7 +94,7 @@ const Container = styled.section`
     }
 `
 
-const Card = styled.div`
+const Card = styled.article`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -157,6 +157,7 @@ const CardImg = styled.div`
     
     > img {
         height: 280px;
+        width: 280px;
 
         @media (min-width: 1400px) {
             height: 460px;
@@ -182,7 +183,7 @@ const CardDescription = styled.div`
     }
     
 
-    > h4 {
+    > h2 {
         font-weight: 900;
         font-size: 24px;
         line-height: 100%;
@@ -231,7 +232,7 @@ const CardDescription = styled.div`
 
     > p {
         width: 100%;
-        color: #7C899C;
+        color: #677281;
         font-weight: 600;
         font-size: 16px;
         line-height: 150%;

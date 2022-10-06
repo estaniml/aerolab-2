@@ -47,7 +47,7 @@ const A = styled.a`
   font-weight: 600;
   font-size: 18px;
   line-height: 150%; 
-  background: ${ ({hov}) => hov ? `linear-gradient(102.47deg, #176FEB -5.34%, #FF80FF 106.58%)` : '#ccc'};
+  background: ${ ({hov}) => hov ? `linear-gradient(102.47deg, #176FEB -5.34%, #FF80FF 106.58%)` : '#7C899C'};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

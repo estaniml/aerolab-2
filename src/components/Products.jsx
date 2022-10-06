@@ -198,7 +198,7 @@ const Products = ({}) => {
   )
 }
 
-const Container = styled.div`
+const Container = styled.section`
     margin: 100px 20px 30px 20px;
     position: relative;
     
@@ -232,7 +232,7 @@ const Container = styled.div`
 `
 
 const FilterBar = styled.div`
-    color: #7C899C;
+    color: #677281;
     
     @media (min-width: 1024px){
         font-size: 18px;
@@ -305,7 +305,7 @@ const FilterBar = styled.div`
             font-weight: 600;
             font-size: 16px;
             line-height: 150%;
-            color: #7C899C;
+            color: #677281;
             max-height: 70px;
     
             @media (min-width: 1024px) {
